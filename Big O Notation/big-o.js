@@ -183,7 +183,7 @@ function booo(n){
   }
 }
 
-booo([1,2,3,4,5]) //==> O(1) space complex
+// booo([1,2,3,4,5]) //==> O(1) space complex
 
 /*
 notes:
@@ -200,7 +200,7 @@ function arrayOfNTimes(n){
   return hiArray
 }
 
-arrayOfNTimes(6)
+// arrayOfNTimes(6)
 
 /*
 notes:
