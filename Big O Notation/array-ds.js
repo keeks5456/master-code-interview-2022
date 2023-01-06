@@ -91,9 +91,9 @@ class MyArray {
 
   pop() {
     const lastItem = this.data[this.length - 1];
-    delete this.data[this.length - 1];
-    this.length--;
-    return lastItem;
+    delete this.data[this.length - 1]
+    this.length --
+    return lastItem
   }
 
   delete(index) {
@@ -109,6 +109,8 @@ class MyArray {
     delete this.data[this.length - 1];
     this.length--;
   }
+  // note:  as soon as we start shifting indexes & changing things around,
+  //we have to loop over things!
 }
 
 const newArray = new MyArray();
