@@ -1,0 +1,8 @@
+{
+  "editor.defaultFormatter": null,
+  "reactSnippets.settings.prettierEnabled": false,
+  "markdown.preview.doubleClickToSwitchToEditor": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
+}
