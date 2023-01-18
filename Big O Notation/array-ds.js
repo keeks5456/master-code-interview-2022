@@ -113,7 +113,7 @@ class MyArray {
   //we have to loop over things!
 }
 
-const newArray = new MyArray();
+// const newArray = new MyArray();
 // newArray.push("hi")
 // newArray.push("Akiko")
 // newArray.push("I")
@@ -121,7 +121,7 @@ const newArray = new MyArray();
 // newArray.push("You")
 // newArray.delete(1)
 
-console.log(newArray);
+// console.log(newArray);
 
 // Strings && Arrays
 /*
@@ -145,10 +145,6 @@ function reverse(str) {
   return newString.join("");
 }
 
-// console.log(reverse("Hi my name is Akiko"));
-// console.log(reverse("b"));
-// console.log(reverse(22));
-
 /*
 - do a check of the input
 */
@@ -168,15 +164,21 @@ function reverse2(str) {
   return newString.join("");
 }
 
-// console.log(reverse2("hello there"))
+
+function reverse3(str){
+  console.log(str)
+ return str.split("").reverse().join("")
+}
+
+
 
 // Merge Sort Array
 
 function mergeSortedArrays(arr1, arr2) {
   //check input
-  // if(!arr1 && !arr2){
-  //   return "she empty girl"
-  // }
+  if(!arr1 && !arr2){
+    return "she empty girl"
+  }
   let combined = [];
   let index = 0;
 
@@ -196,6 +198,11 @@ function mergeSortedArrays(arr1, arr2) {
 }
 
 // console.log(mergeSortedArrays([], []));
-mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+// mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
 
+function mergeSortedArrays2(arr1, arr2){
 
+   
+}
+
+console.log(mergeSortedArrays2([0, 3, 4, 31], [4, 6, 30]))
