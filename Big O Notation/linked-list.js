@@ -22,6 +22,69 @@ class Node {
   }
 }
 
+class DoublyLinkedList{
+  constructor(value){
+    this.head = {
+      value: value,
+      next: null,
+      prev: null
+    }
+    this.tail = this.head
+    this.length = 1
+  }
+
+  append(value){ // O(1)
+    const newNode = new Node(value)
+
+    if(this.head == null){
+      this.head = newNode 
+      this.tail = newNode
+    } else {
+
+      newNode.prev = this.tail// 15 -> null b/c 7(prev) =. null
+      this.tail.next = newNode // 15 -> null is now 15 -> 7
+      this.tail = newNode // reassign tail to point to 7 
+      console.log(newNode.prev)
+    }
+
+    this.length ++
+    return this
+  }
+
+  prepend(value){ // O(1)
+    const newNode = new Node(value)
+    newNode.next = this.head // 12 -> 10
+    this.head.prev = newNode // 12 <-> 10
+    this.head = newNode // 12 is new head
+    this.length ++
+    return this
+  }
+
+  // null - 10 - 5 - 15 - null
+  // <-> 10 <-> 5 <-> 15 <-> 7 -> null!
+
+
+  printList(){
+    const array = []
+    let currentNode = this.head 
+    while(currentNode !== null){
+      array.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+    return array
+  }
+
+
+} //end
+
+
+  const myLinkedList = new DoublyLinkedList(10)
+  // myLinkedList.append(5)
+  // myLinkedList.append(15)
+  myLinkedList.append(7)
+  myLinkedList.prepend(12)
+  console.table(myLinkedList)
+
  class LinkedList {
   constructor(value){
     this.head = {
@@ -121,11 +184,8 @@ class Node {
 //7 -> 10 -> 99 -> 5 -> 15
 
 
- const myLinkedList = new LinkedList(10)
- myLinkedList.append(5)
- myLinkedList.append(15)
- myLinkedList.prepend(7)
- myLinkedList.insert(2, 99)
- myLinkedList.delete(1)
-console.table(myLinkedList.printList())
+//  const myLinkedList = new LinkedList(10)
+ //  myLinkedList.prepend(7)
+//  myLinkedList.insert(2, 99)
+//  myLinkedList.delete(1)
 //  console.log(myLinkedList)
