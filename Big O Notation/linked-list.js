@@ -22,6 +22,122 @@ class Node {
   }
 }
 
+class DoublyLinkedList{
+  constructor(value){
+    this.head = {
+      value: value,
+      next: null,
+      prev: null
+    }
+    this.tail = this.head
+    this.length = 1
+  }
+
+  append(value){ // O(1)
+    const newNode = new Node(value)
+
+    if(this.head == null){
+      this.head = newNode 
+      this.tail = newNode
+    } else {
+
+      newNode.prev = this.tail// 15 -> null b/c 7(prev) =. null
+      this.tail.next = newNode // 15 -> null is now 15 -> 7
+      this.tail = newNode // reassign tail to point to 7 
+    }
+
+    this.length ++
+    return this
+  }
+
+  prepend(value){ // O(1)
+    const newNode = new Node(value)
+    this.head.prev = newNode // 12 <-> 10
+    newNode.next = this.head // 12 -> 10
+    this.head = newNode // 12 is new head
+    this.length ++
+    return this
+  }
+
+  insert(index, value){
+    if(index === 0){
+      this.prepend(value)
+      return this.printList
+    }
+    const newNode = new Node (value)
+    const leader = this.traverseToIndex(index - 1)
+    const follower = leader.next
+    leader.next = newNode  // get leader to point to newNode
+    newNode.prev = leader  // newNode should now point to leader
+    newNode.next = follower// newNode should point after it new to the follower
+    follower.prev = newNode // follower points back to new node
+    this.length ++ //increase length
+    console.log(this)
+    return this.printList()
+  }
+
+  delete(index){
+    if(this.head == null){
+      return this.printList
+    }
+    
+    let leader = this.traverseToIndex(index - 1) //44
+    console.log(leader)
+    const unwantedNode = leader.next //12
+    let follower = unwantedNode.next //10
+    console.log(unwantedNode, "unwanted")
+
+    leader.next = follower //44 -> 10
+    follower.prev = leader // 10 -> 44
+    this.length --
+    return this.printList
+  }
+  
+  //44 - 12 <-> 10 <-> 5 <-> 15 <-> 7 -> null!
+
+
+  traverseToIndex(index){
+    //check for params
+    let counter = 0;
+    let currentNode = this.head
+
+    while(counter != index){
+      currentNode = currentNode.next 
+      counter ++
+    }
+    return currentNode
+   }
+
+
+  // null - 10 - 5 - 15 - null
+  // 12 <-> 10 <-> 5 <-> 15 <-> 7 -> null!
+
+
+  printList(){
+    const array = []
+    let currentNode = this.head 
+    while(currentNode !== null){
+      array.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+    return array
+  }
+
+  
+
+
+} //end
+const myLinkedList = new DoublyLinkedList(10)
+  myLinkedList.append(5)
+  myLinkedList.append(15)
+  myLinkedList.append(7)
+  myLinkedList.prepend(12)
+  myLinkedList.insert(0, 44)
+  myLinkedList.delete(1)
+  console.log(myLinkedList)
+
+  // 12 -10 - 5 15 7 
+
  class LinkedList {
   constructor(value){
     this.head = {
@@ -40,10 +156,6 @@ class Node {
     return this
   }
   prepend(value){ // O(1)
-    // const newNode = {
-    //   value: value, 
-    //   next: null
-    // }
     const newNode = new Node(value)
 
     newNode.next = this.head 
@@ -117,15 +229,4 @@ class Node {
 
  } //ennd
 
-//7 -> 10 -> 5 -> 15
-//7 -> 10 -> 99 -> 5 -> 15
-
-
- const myLinkedList = new LinkedList(10)
- myLinkedList.append(5)
- myLinkedList.append(15)
- myLinkedList.prepend(7)
- myLinkedList.insert(2, 99)
- myLinkedList.delete(1)
-console.table(myLinkedList.printList())
-//  console.log(myLinkedList)
+//  const myLinkedList = new LinkedList(10)
