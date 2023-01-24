@@ -82,10 +82,8 @@ class DoublyLinkedList{
     }
     
     let leader = this.traverseToIndex(index - 1) //44
-    console.log(leader)
     const unwantedNode = leader.next //12
     let follower = unwantedNode.next //10
-    console.log(unwantedNode, "unwanted")
 
     leader.next = follower //44 -> 10
     follower.prev = leader // 10 -> 44
@@ -127,14 +125,14 @@ class DoublyLinkedList{
 
 
 } //end
-const myLinkedList = new DoublyLinkedList(10)
-  myLinkedList.append(5)
-  myLinkedList.append(15)
-  myLinkedList.append(7)
-  myLinkedList.prepend(12)
-  myLinkedList.insert(0, 44)
-  myLinkedList.delete(1)
-  console.log(myLinkedList)
+// const myLinkedList = new DoublyLinkedList(10)
+//   myLinkedList.append(5)
+//   myLinkedList.append(15)
+//   myLinkedList.append(7)
+//   myLinkedList.prepend(12)
+//   myLinkedList.insert(0, 44)
+//   myLinkedList.delete(1)
+//   console.log(myLinkedList)
 
   // 12 -10 - 5 15 7 
 
@@ -219,14 +217,49 @@ const myLinkedList = new DoublyLinkedList(10)
     }
 
     let leader = this.traverseToIndex(index - 1) //7
-    console.log(leader)
     const unwantedNode = leader.next //10
-    console.log(unwantedNode, "unwanted")
     leader.next = unwantedNode.next
     this.length --
     return this.printList
    }
 
+   reverse(){
+
+    if(!this.head.next){
+      return this.head
+    }
+
+    let currentNode = this.head 
+    let nextNode = null 
+    let prevNode = null 
+
+    
+    while(currentNode){
+      nextNode = currentNode.next // 12 // 10
+      currentNode.next = prevNode // 12 -> 44 //10 -> 12
+      prevNode = currentNode // 44 //12
+      currentNode = nextNode // 12
+      console.log(nextNode, 'next')
+      nextNode = null // 12 -> null 
+      console.log(prevNode, 'prev')
+      console.log(currentNode, 'current')
+    }
+    this.head = prevNode // reset
+    return this.head
+    
+   }
+
+      //          n -> null
+     //44 - 12  - 10  - 5  - 15  - 7 -> null!
+    //       p <- c     
  } //ennd
 
-//  const myLinkedList = new LinkedList(10)
+ const myLinkedList = new LinkedList(10)
+ myLinkedList.append(5)
+ myLinkedList.append(15)
+ myLinkedList.append(7)
+ myLinkedList.prepend(12)
+ myLinkedList.insert(0, 44)
+//  myLinkedList.delete(1)
+ myLinkedList.reverse()
+ console.log(myLinkedList)
