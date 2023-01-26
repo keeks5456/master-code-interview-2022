@@ -223,35 +223,61 @@ class DoublyLinkedList{
     return this.printList
    }
 
-   reverse(){
+  //  reverse(){
 
-    if(!this.head.next){
+  //   if(!this.head.next){
+  //     return this.head
+  //   }
+
+  //   let currentNode = this.head 
+  //   let nextNode = null 
+  //   let prevNode = null 
+
+    
+  //   while(currentNode){
+  //     nextNode = currentNode.next // 12 // 10
+  //     currentNode.next = prevNode // 12 -> 44 //10 -> 12
+  //     prevNode = currentNode // 44 //12
+  //     currentNode = nextNode // 12
+  //     console.log(nextNode, 'next')
+  //     nextNode = null // 12 -> null 
+  //     console.log(prevNode, 'prev')
+  //     console.log(currentNode, 'current')
+  //   }
+  //   this.head = prevNode // reset
+  //   return this.head
+    
+  //  }
+
+  reverse2(){
+    //check if there is 1 node in list
+    if(this.head.next === null){
       return this.head
     }
+    let first = this.head //refernce to the head //holds 44
+    this.tail = this.head //refernce to tail now being head
+    let second = first.next //reference to the next item in list // holds 12
 
-    let currentNode = this.head 
-    let nextNode = null 
-    let prevNode = null 
+    while(second){ //as long as we dont see null
+      // console.log(first, 'first')
+      let temp = second.next //reference to the 3rd item in list //holds 10
+      second.next = first // 12 points to 44
+      first = second // 44 points to 12
+      second = temp  // 12 is now 10
+      // console.log(second, '2')
+      // console.log(temp, 't')
 
-    
-    while(currentNode){
-      nextNode = currentNode.next // 12 // 10
-      currentNode.next = prevNode // 12 -> 44 //10 -> 12
-      prevNode = currentNode // 44 //12
-      currentNode = nextNode // 12
-      console.log(nextNode, 'next')
-      nextNode = null // 12 -> null 
-      console.log(prevNode, 'prev')
-      console.log(currentNode, 'current')
+
     }
-    this.head = prevNode // reset
-    return this.head
-    
-   }
+    this.head.next = null
+    this.head = first 
+    return this
+  }
 
-      //          n -> null
+    //      1         
      //44 - 12  - 10  - 5  - 15  - 7 -> null!
-    //       p <- c     
+    // 12   <-     2
+    //                 temp     
  } //ennd
 
  const myLinkedList = new LinkedList(10)
@@ -261,5 +287,5 @@ class DoublyLinkedList{
  myLinkedList.prepend(12)
  myLinkedList.insert(0, 44)
 //  myLinkedList.delete(1)
- myLinkedList.reverse()
+ myLinkedList.reverse2()
  console.log(myLinkedList)
