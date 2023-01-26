@@ -271,7 +271,7 @@ class DoublyLinkedList{
     }
     this.head.next = null
     this.head = first 
-    return this.head
+    return this
   }
 
     //      1         
