@@ -49,60 +49,92 @@ removing & added does effect anything after.
 // }
 
 class Node {
-  constructor(value){
+  constructor(value) {
     this.value = value;
-    this.next = null
+    this.next = null;
   }
 }
 
 class Stack {
-  constructor(){
+  constructor() {
     this.top = null;
     this.bottom = null;
-    this.length = 0
+    this.length = 0;
   }
-  peek(){
-    
-    if(this.length == 0){
-      return "nothing in stack"
+  peek() {
+    if (this.length == 0) {
+      return "nothing in stack";
     } else {
-      return this.top
+      return this.top;
     }
   }
-  push(value){
-    const newNode = new Node(value)
+  push(value) {
+    const newNode = new Node(value);
 
-    if(this.length === 0){
+    if (this.length === 0) {
       // if we find that length is empty, we make the newNode top & bottom
-      this.top = newNode
-      this.bottom = newNode
+      this.top = newNode;
+      this.bottom = newNode;
     } else {
-
-      const holdPointer = this.top //null
-      this.top = newNode //netflix == top
-      this.top.next = holdPointer// netflix --> null
+      const holdPointer = this.top; //null
+      this.top = newNode; //netflix == top
+      this.top.next = holdPointer; // netflix --> null
     }
-      this.length ++
-      return this
+    this.length++;
+    return this;
   }
 
   //amazon -> netflix
-  pop(){
+  pop() {
     //if top doesn't exist, return null
-    if(!this.top){
-      return null
-    } 
-      const hold = this.top 
-      this.top = this.top.next
-    this.length --
-    return this
-
+    if (!this.top) {
+      return null;
+    }
+    if(this.top === this.bottom){
+      this.bottom = null
+    }
+    const hold = this.top; //hold current top value
+    this.top = this.top.next; // top will now be
+    this.length--;
+    return hold; //return the new top
   }
 }
 
-const myStack = new Stack()
-myStack.peek()
-myStack.push("netflix")
-myStack.push("amazon")
-myStack.pop()
-console.table(myStack)
+const myStack = new Stack();
+myStack.peek();
+myStack.push("netflix");
+myStack.push("amazon");
+myStack.push("safeway");
+myStack.pop();
+// console.table(myStack);
+
+
+class Array{
+  constructor(){
+    this.item = []
+  }
+
+  push(element){
+    this.item.push(element)
+  }
+
+  pop(){
+    this.item.pop()
+  }
+
+  peek(){
+    return this.item[this.item.length - 1]
+  }
+  isEmpty(){
+    return this.length == 0
+  }
+}
+
+const myArray = new Array()
+myArray.push("hello")
+myArray.push("meow")
+console.log(myArray.peek())
+myArray.push("woof")
+myArray.pop()
+console.log(myArray.isEmpty())
+console.log(myArray)
