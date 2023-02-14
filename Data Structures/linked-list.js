@@ -289,3 +289,21 @@ class DoublyLinkedList{
 //  myLinkedList.delete(1)
  myLinkedList.reverse2()
 //  console.log(myLinkedList)
+
+
+//  function cracklePop(num){
+
+//   for(let i = 1; i <= num; i++){
+//     if(i % 3 == 0 && i % 5 == 0){
+//       console.log("CracklePop")
+//     } else if(i % 3 == 0 ){
+//       console.log("Crackle")
+//     } else if(i % 5 == 0){
+//       console.log("Pop")
+//     } else{
+//       console.log(i)
+//     }
+//   }
+
+//  }
+//  console.log(cracklePop(22))
