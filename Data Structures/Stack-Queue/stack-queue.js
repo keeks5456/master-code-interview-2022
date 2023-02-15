@@ -191,6 +191,8 @@ myQueue.enqueue("joan")
 myQueue.dequeue()
 // console.table(myQueue)
 
+
+
 // Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
 
 // Implement the MyQueue class:
@@ -311,7 +313,7 @@ Input
 Output
 [null, null, null, 2, 2, false]
 
-Explanation
+// Explanation
 MyStack myStack = new MyStack();
 myStack.push(1);
 myStack.push(2);
