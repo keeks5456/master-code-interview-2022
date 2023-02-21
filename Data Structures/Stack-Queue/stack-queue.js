@@ -96,7 +96,7 @@ class Stack {
     const hold = this.top; //hold current top value
     this.top = this.top.next; // top will now be
     this.length--;
-    return hold; //return the new top
+    return hold; //return the popped off element
   }
 }
 
@@ -190,6 +190,8 @@ myQueue.enqueue("steve")
 myQueue.enqueue("joan")
 myQueue.dequeue()
 // console.table(myQueue)
+
+
 
 // Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
 
@@ -311,7 +313,7 @@ Input
 Output
 [null, null, null, 2, 2, false]
 
-Explanation
+// Explanation
 MyStack myStack = new MyStack();
 myStack.push(1);
 myStack.push(2);
