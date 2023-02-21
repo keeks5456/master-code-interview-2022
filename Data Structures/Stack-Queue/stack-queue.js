@@ -96,7 +96,7 @@ class Stack {
     const hold = this.top; //hold current top value
     this.top = this.top.next; // top will now be
     this.length--;
-    return hold; //return the new top
+    return hold; //return the popped off element
   }
 }
 
