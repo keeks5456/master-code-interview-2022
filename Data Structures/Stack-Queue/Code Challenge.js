@@ -30,8 +30,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 var MyQueue = function () {
-  this.firstStack = [];
-  this.secondStack = [];
+  this.pushStack = [];
+  this.popStack = [];
 };
 
 /**
@@ -39,28 +39,18 @@ var MyQueue = function () {
  * @return {void}
  */
 MyQueue.prototype.push = function (x) {
-  if (this.secondStack.length === 0) {
-    this.firstStack.push(x);
-  } else {
-    this.secondStack.push(x);
-  }
+  this.pushStack.push(x);
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.pop = function () {
-  if (this.secondStack.length === 0) {
-    let first = this.firstStack[0];
-    this.secondStack = this.firstStack.slice(1);
-    this.firstStack = [];
-    console.log(first);
-    return first;
-  } else {
-    let first = this.secondStack[0];
-    this.firstStack = this.secondStack.slice(1);
-    this.secondStack = [];
-    return first;
+  if (this.popStack.length === 0) {
+    while (!this.popStack) {
+      this.popStack.push(this.pushStack.pop());
+    }
+    return this.popStack;
   }
 };
 
@@ -68,10 +58,8 @@ MyQueue.prototype.pop = function () {
  * @return {number}
  */
 MyQueue.prototype.peek = function () {
-  if (!this.secondStack.length) {
-    return this.firstStack[0];
-  } else {
-    return this.secondStack[0];
+  if (!this.popStack) {
+    return this.popStack[this.popStack.length - 1];
   }
 };
 
@@ -79,7 +67,7 @@ MyQueue.prototype.peek = function () {
  * @return {boolean}
  */
 MyQueue.prototype.empty = function () {
-  return !this.firstStack.length && !this.secondStack.length;
+  return !this.pushStack.length && !this.popStack.length;
 };
 
 /**
