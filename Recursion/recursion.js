@@ -112,3 +112,23 @@ function fibStandard(n) {
   return sum;
 }
 console.log(fibStandard(7));
+
+//tail call optimization ??
+
+/*
+   Every time you use a tree or convert something into a tree. 
+   consider recursion. 
+   1. Divided into a num of sub-problems that are small instances of the same problem
+   2. Each instance of the sub-problem id identical in nature
+   3. the solution of each subproblem can bee combined to solve the problem at the hand
+
+   Divide and conquer using recursion
+*/
+
+//Implement a function that reverses a string using iteration...and then recursion!
+function reverseStringRecursive(str) {}
+
+function reverseStringIterative(str) {}
+
+reverseString("yoyo mastery");
+//should return: 'yretsam oyoy'
