@@ -153,9 +153,33 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
-console.log(tree.lookup(15), "look up");
+// console.log(tree.lookup(15), "look up");
 // console.table(JSON.stringify(traverse(tree.root)))
 
+// /////////////////////////////////////////////////
+/*
+BINARY HEAP:
+- every child belongs to a parent node that has greater priority or value
+- every node @ top level has a greater value than nodes on next level down
+- used in priority queues
+- left & right can be any value as lng as lower than highest parent
+
+- lookup O(n)
+- insert O(log N)
+- delete O(log N)
+
+- great for comparative evaluation
+note:
+memory heap != heap data structure
+- take up less space possible 
+- left to right insertion
+- 
+ */
+
+/*
+PRIORITY QUEUES:
+- 
+*/
 //test out if code is working
 
 function traverse(node) {
@@ -164,3 +188,4 @@ function traverse(node) {
   tree.right = node.right === null ? null : traverse(node.right);
   return tree;
 }
+// @ here Try to traverse a node through recursion
