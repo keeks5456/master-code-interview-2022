@@ -6,7 +6,7 @@ Sorting:
 */
 
 const basket = [2, 33, 44, 66, 74, 6];
-console.log("66".charAt(0)); //return 6
+// console.log("66".charAt(0)); //return 6
 
 basket.sort(function (a, b) {
   return a - b;
@@ -20,11 +20,9 @@ pseudo code
 
 brute force:
 two loops i & j
-have i start at 0 & j start at i + 1
-compare if i > j, switch 
-switch: temp = i, i = j, j = temp?
-compare if i < j stay, then move i+1 & j+1
-if all the comparisons are done return newly sorted array
+have i start at 0 & j start at 0
+compare if j > j + 1, switch 
+switch: temp = j, j = j+1, j + 1 = j
 */
 //      i
 const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
@@ -60,6 +58,9 @@ function bubbleSort(array) {
         array[j] = array[j + 1];
         array[j + 1] = temp;
         swapped = true;
+        // console.log(array[j], "j");
+        // console.log(array[j + 1], "j + 1");
+        // console.log(temp, "temp");
       }
     }
     //if no two elements were swapped in inner loop, break out opf loop
@@ -68,4 +69,49 @@ function bubbleSort(array) {
 }
 
 bubbleSort(numbers);
-console.table(numbers);
+// console.table(numbers);
+
+/*
+Selection Sort
+- find the smallest number, compare to the other nums in array. if you find something smaller, that is new hold value. 
+- if nothing else is smallest element assign that to respective index
+
+need: 
+place holder for smallest 
+2 for loops 
+first loop i @ 0 , holder
+2nd loop j @ 1, scanner
+compare i > j, smallest = j, j = j + 1
+ once smallest is found --> i = smallest 
+*/
+
+const nums = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
+function selectionSort(array) {
+  let length = array.length;
+  let smallest;
+  let temp;
+  for (let i = 0; i < length; i++) {
+    //set current index to smallest
+    smallest = i;
+    //have a reference to array[i] element
+    temp = array[i];
+    for (let j = i + 1; j < length; j++) {
+      if (array[j] < array[smallest]) {
+        smallest = j;
+        //update smallest if current is lower than what we had prev.
+        console.log(smallest, "smallest");
+        console.log(array[j], "array[j]");
+      }
+    }
+    if (smallest != i) {
+      array[i] = array[smallest];
+      //   console.log(smallest, "smallest");
+      //   console.log(array[i], "array[i]");
+      array[smallest] = temp;
+    }
+  }
+}
+
+selectionSort(nums);
+// console.log(nums);
