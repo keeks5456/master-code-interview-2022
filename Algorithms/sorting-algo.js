@@ -85,8 +85,6 @@ compare i > j, smallest = j, j = j + 1
  once smallest is found --> i = smallest 
 */
 
-const nums = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
-
 function selectionSort(array) {
   let length = array.length;
   let smallest;
@@ -113,5 +111,48 @@ function selectionSort(array) {
   }
 }
 
-selectionSort(nums);
+// selectionSort(nums);
 // console.log(nums);
+
+/*
+    Insertion Sort 
+    - useful for nearly sorted list 
+
+    - assign length to the length of array
+    - outer loop will start at 1 and run length - 1 iterations
+    - inner while loop starts @ index of i from outer loop & compare each element to left neighbor. if element smaller than neighbor -> swap
+    - inner loop keeps moving an element to the left as long as it is smaller than left neighbor.
+    - once while loop done, current index is in correct position in sorted portion of array
+    - outer looop keep going through array till all elements are in correct positions & array is sorted.
+
+    *Sort in ascending order:
+    - iterate from index[1] to array[length]
+    - assign a key to array[i]
+    - compare key to left neighbor
+    - if key is smaller, compare to next next left neighbor, Move greated elements up for space to swap
+
+    #### come back to this 
+*/
+const nums = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
+function insertionSort(array) {
+  let length = array.length;
+  let key;
+  let j;
+  for (let i = 1; i < length; i++) {
+    key = array[i];
+    j = i - 1;
+    while (j >= 0 && array[j] > key) {
+      //   console.log(array[j], "arr[j");
+      array[j + 1] = array[j];
+      console.log(array[j], "arr[j]");
+      j = j - 1;
+      console.log(j, "j");
+    }
+    array[j + 1] = key;
+    console.table(key, "key");
+  }
+}
+
+insertionSort(nums);
+console.log(nums);
