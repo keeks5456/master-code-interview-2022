@@ -133,7 +133,6 @@ function selectionSort(array) {
 
     #### come back to this 
 */
-const nums = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
 
 function insertionSort(array) {
   let length = array.length;
@@ -154,5 +153,48 @@ function insertionSort(array) {
   }
 }
 
-insertionSort(nums);
-console.log(nums);
+// insertionSort(nums);
+// console.log(nums);
+
+/*
+
+MERGE SORT
+- 
+
+
+*/
+const nums = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
+function mergeSort(array) {
+  if (array.length === 1) {
+    return array;
+  }
+  let half = Math.ceil(array.length / 2);
+  let left = array.slice(0, half);
+  let right = array.slice(half);
+  // Split Array in into right and left
+
+  return merge(mergeSort(left), mergeSort(right)); //this is splitting the array
+}
+//check while left or right are not empty,
+//compar
+function merge(left, right) {
+  let sortedArray = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      sortedArray.push(left[i]);
+      i++;
+    } else {
+      sortedArray.push(right[j]);
+      j++;
+    }
+  }
+  console.log(sortedArray);
+
+  return sortedArray.concat(left.slice(i)).concat(right.slice(j));
+}
+
+const answer = mergeSort(nums);
